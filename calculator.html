@@ -6,8 +6,9 @@
     <title>Calculator</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.8.0/math.js"></script>
   </head>
-  <body class="bg-gray-200">
+  <body id="bgimage" class="bg-gray-200">
     <div class="flex items-center justify-center mt-10">
       <div class="btn-container">
         <!-- Display Area -->
@@ -15,7 +16,7 @@
           <p
             class="display-text text-4xl text-gray-800 font-bold text-center h-16 flex items-center justify-center"
           >
-            Calc
+            0
           </p>
         </div>
 
@@ -23,90 +24,18 @@
         <div class="grid grid-cols-4 gap-2">
           <button
             type="button"
-            class="bg-blue-500 text-white font-semibold py-2 rounded hover:bg-blue-600"
-          >
-            +
-          </button>
-          <button
-            type="button"
-            class="bg-blue-500 text-white font-semibold py-2 rounded hover:bg-blue-600"
-          >
-            5
-          </button>
-          <button
-            type="button"
-            class="bg-blue-500 text-white font-semibold py-2 rounded hover:bg-blue-600"
-          >
-            6
-          </button>
-          <button
-            type="button"
-            class="bg-blue-500 text-white font-semibold py-2 rounded hover:bg-blue-600"
-          >
-            -
-          </button>
-          <button
-            type="button"
-            class="bg-blue-500 text-white font-semibold py-2 rounded hover:bg-blue-600"
-          >
-            4
-          </button>
-          <button
-            type="button"
-            class="bg-blue-500 text-white font-semibold py-2 rounded hover:bg-blue-600"
-          >
-            7
-          </button>
-          <button
-            type="button"
-            class="bg-blue-500 text-white font-semibold py-2 rounded hover:bg-blue-600"
-          >
-            *
-          </button>
-          <button
-            type="button"
-            class="bg-blue-500 text-white font-semibold py-2 rounded hover:bg-blue-600"
-          >
-            3
-          </button>
-          <button
-            type="button"
-            class="bg-blue-500 text-white font-semibold py-2 rounded hover:bg-blue-600"
-          >
-            8
-          </button>
-          <button
-            type="button"
-            class="bg-blue-500 text-white font-semibold py-2 rounded hover:bg-blue-600"
-          >
-            /
-          </button>
-
-          <button
-            type="button"
-            class="bg-blue-500 text-white font-semibold py-2 rounded hover:bg-blue-600"
-          >
-            9
-          </button>
-          <button
-            type="button"
-            class="bg-blue-500 text-white font-semibold py-2 hover:bg-blue-600"
+            class="clear-btn bg-red-500 text-white font-semibold py-2 rounded hover:bg-red-600"
           >
             C
           </button>
           <button
             type="button"
-            class="bg-blue-500 text-white font-semibold py-2 hover:bg-blue-600"
+            class="clear-all-btn bg-red-500 text-white font-semibold py-2 rounded hover:bg-red-600"
           >
-            1
+            CA
           </button>
           <button
-            type="button"
-            class="bg-blue-500 text-white font-semibold py-2 hover:bg-blue-600"
-          >
-            =
-          </button>
-          <button
+            id="btn"
             type="button"
             class="bg-blue-500 text-white font-semibold py-2 rounded hover:bg-blue-600"
           >
@@ -114,34 +43,108 @@
           </button>
           <button
             type="button"
-            class="bg-blue-500 text-white font-semibold py-2 rounded hover:bg-blue-600"
+            class="operator-btn bg-blue-500 text-white font-semibold py-2 rounded hover:bg-blue-600"
           >
-            CA
+            /
+          </button>
+
+          <button
+            type="button"
+            class="number-btn bg-blue-500 text-white font-semibold py-2 rounded hover:bg-blue-600"
+          >
+            7
           </button>
           <button
             type="button"
-            class="bg-blue-500 text-white font-semibold py-2 rounded hover:bg-blue-600"
+            class="number-btn bg-blue-500 text-white font-semibold py-2 rounded hover:bg-blue-600"
+          >
+            8
+          </button>
+          <button
+            type="button"
+            class="number-btn bg-blue-500 text-white font-semibold py-2 rounded hover:bg-blue-600"
+          >
+            9
+          </button>
+          <button
+            type="button"
+            class="operator-btn bg-blue-500 text-white font-semibold py-2 rounded hover:bg-blue-600"
+          >
+            *
+          </button>
+
+          <button
+            type="button"
+            class="number-btn bg-blue-500 text-white font-semibold py-2 rounded hover:bg-blue-600"
+          >
+            4
+          </button>
+          <button
+            type="button"
+            class="number-btn bg-blue-500 text-white font-semibold py-2 rounded hover:bg-blue-600"
+          >
+            5
+          </button>
+          <button
+            type="button"
+            class="number-btn bg-blue-500 text-white font-semibold py-2 rounded hover:bg-blue-600"
+          >
+            6
+          </button>
+          <button
+            type="button"
+            class="operator-btn bg-blue-500 text-white font-semibold py-2 rounded hover:bg-blue-600"
+          >
+            -
+          </button>
+
+          <button
+            type="button"
+            class="number-btn bg-blue-500 text-white font-semibold py-2 rounded hover:bg-blue-600"
+          >
+            1
+          </button>
+          <button
+            type="button"
+            class="number-btn bg-blue-500 text-white font-semibold py-2 rounded hover:bg-blue-600"
+          >
+            2
+          </button>
+          <button
+            type="button"
+            class="number-btn bg-blue-500 text-white font-semibold py-2 rounded hover:bg-blue-600"
+          >
+            3
+          </button>
+          <button
+            type="button"
+            class="operator-btn bg-blue-500 text-white font-semibold py-2 rounded hover:bg-blue-600"
+          >
+            +
+          </button>
+
+          <button
+            type="button"
+            class="number-btn bg-blue-500 text-white font-semibold py-2 rounded hover:bg-blue-600 col-span-2"
           >
             0
+          </button>
+          <button
+            type="button"
+            class="number-btn bg-blue-500 text-white font-semibold py-2 rounded hover:bg-blue-600"
+          >
+            .
+          </button>
+          <button
+            type="button"
+            class="equals-btn bg-blue-500 text-white font-semibold py-2 rounded hover:bg-blue-600"
+          >
+            =
           </button>
         </div>
       </div>
     </div>
     <br />
-    <!-- <script type="text/javascript" src="script.js"></script> -->
-    <div style="margin-left: 200px">
-      <h3>Your Task</h3>
-      <ul>
-        <li>"C" and "CA" button must be red.</li>
-        <li>"=" must be green.</li>
-        <li>
-          Add the missing buttons, and you must arrange all elements the way a
-          calculator should be.
-        </li>
-        <li>Locate elements without rounded corners and add them.</li>
-        <li>Change the text on the calculator display to "0"</li>
-        <li>Change the background color to a color of your choice</li>
-      </ul>
-    </div>
+    <script src="script.js"></script>
   </body>
 </html>
